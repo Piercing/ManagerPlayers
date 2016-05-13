@@ -27,8 +27,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="io.devspain.activity.PreferencesActivity"
+            android:name=".activity.PreferencesActivity"
             android:label="@string/title_activity_preferences" >
+        </activity>
+        <activity
+            android:name=".activity.LoadPlayersActivity"
+            android:label="@string/title_activity_management_players" >
+        </activity>
+        <activity
+            android:name="io.devspain.activity.DeletePlayersActivity"
+            android:label="@string/title_activity_delete_players" >
         </activity>
     </application>
 

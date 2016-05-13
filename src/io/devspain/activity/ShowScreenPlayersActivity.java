@@ -18,12 +18,6 @@ import io.devspain.R;
  */
 public class ShowScreenPlayersActivity extends Activity implements OnClickListener {
 
-	private static final int menu_configuracion = 1;
-	private static final int menu_linterna = 2;
-	private static final int menu_visitar_url = 3;
-	private static final int menu_linterna_encender = 4;
-	private static final int menu_linterna_apagar = 5;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -65,22 +59,24 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 		int id = item.getItemId();
 		switch (id) {
 		case R.id.preferences:
-			// Launch activity PreferencesActivity, with creating a explicit intent 
-			Intent intent = new Intent(this, PreferencesActivity.class);
-			// We ask Android you launch the explicit intent to display the screen
-			startActivity(intent);
-			
+			// Launch activity PreferencesActivity, with creating a explicit
+			// intent
+			Intent intentPreferences = new Intent(this, PreferencesActivity.class);
+			// We ask Android you launch the explicit intent to display the
+			// screen
+			startActivity(intentPreferences);
 			break;
 
-		case R.id.management_players:
-			if (id == R.id.load_players) {
-				// Launch activity LoadPlayersActivity
+		case R.id.load_players:
+			// Launch activity LoadPlayersActivity
+			Intent intentLoadPlayers = new Intent(this, LoadPlayersActivity.class);
+			startActivity(intentLoadPlayers);
+			break;
 
-			} else if (id == R.id.delete_players) {
-				// Launch activity DeletePlayersActivity
-
-			}
-
+		case R.id.delete_players:
+			// Launch activity DeletePlayersActivity
+			Intent intentDeletePlayers = new Intent(this, DeletePlayersActivity.class);
+			startActivity(intentDeletePlayers);
 			break;
 
 		default:
