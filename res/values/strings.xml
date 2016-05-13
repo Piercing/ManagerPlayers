@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Gestión Juagdores</string>
+    <!-- Options System -->
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
-    <!-- show_screen_players -->
-	<string name="show_screen_players">Mostar Jugadores</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Title ActioBar -->
+    <string name="app_name">Gestión Juagdores</string>
+
+    <!-- Button show_screen_players -->
+    <string name="show_screen_players">Mostar Jugadores</string>
+
+    <!-- menu settings -->
+    <string name="preferencies">Preferencias</string>
+    <string name="management_players">Gestión de Jugadores</string>
+    <string name="load_players">Cargar Jugadores</string>
+    <string name="delete_players">Eliminar Jugadores</string>
+    <string name="title_activity_preferences">Preferences</string>
+
 </resources>

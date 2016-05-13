@@ -1,7 +1,5 @@
 package io.devspain.fragments;
 
-import com.tutorials.tabswithlistview.R;
-
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -11,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import io.devspain.R;
 
 public class EngagePlayersFragment extends ListFragment {
 	String[] players = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech",

@@ -1,13 +1,12 @@
 package io.devspain.activity;
 
-import com.tutorials.tabswithlistview.R;
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import io.devspain.R;
 import io.devspain.fragments.EngagePlayersFragment;
 import io.devspain.fragments.RetirePlayersFragment;
 
@@ -29,15 +28,14 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.menu, menu);
 		return true;
 	}
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
-		// TODO Auto-generated method stub
 
-		// FIRST TAB SHOW MAN UTD
+		// first tab show engage Players
 		if (tab.getPosition() == 0) {
 			EngagePlayersFragment c = new EngagePlayersFragment();
 			getSupportFragmentManager().beginTransaction().replace(R.id.container, c).commit();

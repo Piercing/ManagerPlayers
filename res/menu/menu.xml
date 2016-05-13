@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/preferences"
+        android:title="@string/preferencies">
+    </item>
+    <item
+        android:id="@+id/management_players"
+        android:title="@string/management_players">
+        <menu>
+            <item
+                android:id="@+id/load_players"
+                android:title="@string/load_players"/>
+            <item
+                android:id="@+id/delete_players"
+                android:title="@string/delete_players"/>
+        </menu>
+    </item>
+
+</menu>
