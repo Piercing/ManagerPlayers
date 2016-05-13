@@ -1,4 +1,4 @@
-package io.devspain.activity;
+package io.devspain.fragments;
 
 import com.tutorials.tabswithlistview.R;
 
@@ -12,14 +12,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class RetirePlayersFragment extends ListFragment {
-	String[] players = { "Aaron Ramsey", "Jack Wilshere", "Mesut Ozil", "Alexis Sanchez", "Per Metesacker",
-			"Keiron Gibbs", "Laurent Koscielny", "Olivier Giroud" };
+public class EngagePlayersFragment extends ListFragment {
+	String[] players = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech",
+			"Didier Drogba", "Branislav Ivanovic" };
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View rootView = inflater.inflate(R.layout.retire_tab, container, false);
+		View rootView = inflater.inflate(R.layout.engage_tab, container, false);
 
 		// CREATE ADAPTER AND SET IT TO LV
 		ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players);

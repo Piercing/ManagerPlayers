@@ -8,8 +8,10 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import io.devspain.fragments.EngagePlayersFragment;
+import io.devspain.fragments.RetirePlayersFragment;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class PlayersScreenActivity extends FragmentActivity implements ActionBar.TabListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

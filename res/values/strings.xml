@@ -4,5 +4,7 @@
     <string name="app_name">Gestión Juagdores</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
+    <!-- show_screen_players -->
+	<string name="show_screen_players">Mostar Jugadores</string>
 </resources>
