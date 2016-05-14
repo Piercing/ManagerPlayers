@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory 
+        android:title="DATOS PERSONALES"
+        android:key="personal_data" >
+        
+        <EditTextPreference
+            android:dialogTitle="Nombre"
+            android:key="nombre"
+            android:summary="Introduce aquí tu nombre"
+            android:title="Nombre del usuario" />
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="JUAGADORES" />
+    
+    
+        <MultiSelectListPreference
+            android:dialogTitle="Juadores transferibles"
+            android:entries="@array/transfer_players"
+            android:entryValues="@array/cod_player_transfer"
+            android:key="transfer_players"
+            android:summary="Se muestran todos aquellos jugadores en estado transferible"
+            android:title="Juagadores Transferibles" />
+    
+    
+    
+        <MultiSelectListPreference
+            android:dialogTitle="Juadores rentables"
+            android:entries="@array/profitable_players"
+            android:entryValues="@array/cod_player_profitable"
+            android:key="profitable_players"
+            android:summary="Se muestran todos aquellos jugadores que son rentables"
+            android:title="Juagadores Rentables" />
+   
+    
+   
+        <MultiSelectListPreference
+            android:dialogTitle="Juadores desastrosos"
+            android:entries="@array/disastrous_players"
+            android:entryValues="@array/cod_player_disastrous"
+            android:key="disastrous_players"
+            android:summary="Se muestran todos aquellos jugadores que son un desastre"
+            android:title="Juagadores Desastrosos" />
+    
+
+</PreferenceScreen>

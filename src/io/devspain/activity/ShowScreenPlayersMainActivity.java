@@ -3,6 +3,7 @@ package io.devspain.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,11 +17,10 @@ import io.devspain.R;
  * @author merlosalbarracin@gmail.com
  *
  */
-public class ShowScreenPlayersActivity extends Activity implements OnClickListener {
+public class ShowScreenPlayersMainActivity extends Activity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		// Set view content
 		setContentView(R.layout.show_screen_players_activity);
@@ -28,6 +28,10 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 		Button showScreenPlayersBtn = (Button) findViewById(R.id.btn_show_players);
 		// Set event by clicking on the button
 		showScreenPlayersBtn.setOnClickListener(this);
+
+		// This method saves all attribute values defaultValue preferences in
+		// SharedPreferences.
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 	}
 
 	@Override
@@ -49,7 +53,6 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 	}
 
 	// It tells what happens when you press a menu option
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Always call first super
@@ -59,9 +62,9 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 		int id = item.getItemId();
 		switch (id) {
 		case R.id.preferences:
-			// Launch activity PreferencesActivity, with creating a explicit
+			// Launch activity PreferencesUserActivity, with creating a explicit
 			// intent
-			Intent intentPreferences = new Intent(this, PreferencesActivity.class);
+			Intent intentPreferences = new Intent(this, PreferencesUserActivity.class);
 			// We ask Android you launch the explicit intent to display the
 			// screen
 			startActivity(intentPreferences);
@@ -75,8 +78,7 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 
 		case R.id.delete_players:
 			// Launch activity DeletePlayersActivity
-			Intent intentDeletePlayers = new Intent(this, DeletePlayersActivity.class);
-			startActivity(intentDeletePlayers);
+			startActivity(new Intent(this, DeletePlayersActivity.class));
 			break;
 
 		default:
@@ -86,7 +88,4 @@ public class ShowScreenPlayersActivity extends Activity implements OnClickListen
 
 		return returnSuper;
 	}
-
-	// Éste dice qué pasa al pulsar una opción de menú
-
 }

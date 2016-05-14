@@ -18,7 +18,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".activity.ShowScreenPlayersActivity"
+            android:name=".activity.ShowScreenPlayersMainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,11 +32,15 @@
         </activity>
         <activity
             android:name=".activity.LoadPlayersActivity"
-            android:label="@string/title_activity_management_players" >
+            android:label="@string/title_activity_load_players" >
         </activity>
         <activity
             android:name="io.devspain.activity.DeletePlayersActivity"
             android:label="@string/title_activity_delete_players" >
+        </activity>
+        <activity
+            android:name="io.devspain.activity.PreferencesUserActivity"
+            android:label="@string/title_activity_preferences_user" >
         </activity>
     </application>
 

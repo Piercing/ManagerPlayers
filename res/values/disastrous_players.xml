@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="disastrous_players">
+        <item>Samuel Etoo</item>
+        <item>Oliver Giroud</item>
+        <item>Didier Drogba</item>
+    </string-array>
+    <string-array name="cod_player_disastrous">
+        <item>DSE</item>
+        <item>DOG</item>
+        <item>DDD</item>
+    </string-array>
+
+</resources>

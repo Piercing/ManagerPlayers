@@ -17,10 +17,9 @@ public class EngagePlayersFragment extends ListFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		View rootView = inflater.inflate(R.layout.engage_tab, container, false);
 
-		// CREATE ADAPTER AND SET IT TO LV
+		// Create adapter and set it to listView
 		ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players);
 		setListAdapter(adapter);
 
@@ -29,7 +28,6 @@ public class EngagePlayersFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
 		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
 	}
 

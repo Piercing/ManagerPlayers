@@ -18,7 +18,8 @@
     <string name="load_players">Cargar Jugadores</string>
     <string name="delete_players">Eliminar Jugadores</string>
     <string name="title_activity_preferences">Preferences</string>
-    <string name="title_activity_management_players">ManagementPlayersActivity</string>
-    <string name="title_activity_delete_players">DeletePlayersActivity</string>
+    <string name="title_activity_load_players">Cargar Jugadores</string>
+    <string name="title_activity_delete_players">Eliminar Jugadores</string>
+    <string name="title_activity_preferences_user">Preferencias usuario</string>
 
 </resources>

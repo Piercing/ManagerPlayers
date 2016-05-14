@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="profitable_players">
+        <item>Cristiano Ronaldo</item>
+        <item>Leo Messi</item>
+        <item>Garet Bale</item>
+    </string-array>
+    <string-array name="cod_player_profitable">
+        <item>RCR</item>
+        <item>RLM</item>
+        <item>RGB</item>
+    </string-array>
+
+</resources>

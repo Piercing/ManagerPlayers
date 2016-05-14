@@ -16,11 +16,11 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// GET AND SETUP ACTIONBAR
+		// Get and setup actionBar on navigation mode tabs
 		final ActionBar ab = getActionBar();
 		ab.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// ADD THE TABS
+		// Add the tabs
 		ab.addTab(ab.newTab().setText("Para Jubilar").setTabListener(this));
 		ab.addTab(ab.newTab().setText("para Fichar").setTabListener(this));
 	}
@@ -35,13 +35,13 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
-		// first tab show engage Players
+		// First tab show engage Players
 		if (tab.getPosition() == 0) {
-			EngagePlayersFragment c = new EngagePlayersFragment();
-			getSupportFragmentManager().beginTransaction().replace(R.id.container, c).commit();
+			EngagePlayersFragment engage = new EngagePlayersFragment();
+			getSupportFragmentManager().beginTransaction().replace(R.id.container, engage).commit();
 		} else if (tab.getPosition() == 1) {
-			RetirePlayersFragment a = new RetirePlayersFragment();
-			getSupportFragmentManager().beginTransaction().replace(R.id.container, a).commit();
+			RetirePlayersFragment retire = new RetirePlayersFragment();
+			getSupportFragmentManager().beginTransaction().replace(R.id.container, retire).commit();
 		}
 
 	}

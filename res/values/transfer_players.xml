@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="transfer_players">
+        <item>Diego Costa</item>
+        <item>David Arbeloa</item>
+        <item>Mesut Ozil</item>
+    </string-array>
+    <string-array name="cod_player_transfer">
+        <item>TDC</item>
+        <item>TDA</item>
+        <item>TMO</item>
+    </string-array>
+
+</resources>
