@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="io.devspain.activity.EditionPlayerActivity" >
+
+    <TextView
+        android:id="@+id/txt_edition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/txt_edition"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/player_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/player_situation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/player_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/player_situation"
+        android:layout_marginTop="35dp"
+        android:textSize="12sp" />
+
+    <CheckBox
+        android:id="@+id/checkbox_retire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/player_name"
+        android:layout_below="@+id/player_name"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/checkbox_retire"
+        android:layout_alignBottom="@+id/checkbox_retire"
+        android:layout_alignParentStart="@+id/checkbox_retire"
+        android:layout_marginEnd="14dp"
+        android:layout_toEndOf="@+id/checkbox_retire"
+        android:layout_toStartOf="@+id/txt_edition"
+        android:text="@string/for_retire"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txt_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/checkbox_retire"
+        android:layout_below="@+id/checkbox_retire"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@+id/checkbox_retire"
+        android:text="@string/age_player"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txt_age"
+        android:layout_alignBottom="@+id/txt_age"
+        android:layout_centerHorizontal="true"
+        android:ems="3"
+        android:hint="@string/edit_text_age" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

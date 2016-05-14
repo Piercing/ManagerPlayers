@@ -43,7 +43,6 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 			RetirePlayersFragment retire = new RetirePlayersFragment();
 			getSupportFragmentManager().beginTransaction().replace(R.id.container, retire).commit();
 		}
-
 	}
 
 	@Override

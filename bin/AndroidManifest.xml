@@ -35,12 +35,16 @@
             android:label="@string/title_activity_load_players" >
         </activity>
         <activity
-            android:name="io.devspain.activity.DeletePlayersActivity"
+            android:name=".activity.DeletePlayersActivity"
             android:label="@string/title_activity_delete_players" >
         </activity>
         <activity
-            android:name="io.devspain.activity.PreferencesUserActivity"
+            android:name=".activity.PreferencesUserActivity"
             android:label="@string/title_activity_preferences_user" >
+        </activity>
+        <activity
+            android:name="io.devspain.activity.EditionPlayerActivity"
+            android:label="@string/title_activity_edition_player" >
         </activity>
     </application>
 

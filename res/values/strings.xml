@@ -21,5 +21,13 @@
     <string name="title_activity_load_players">Cargar Jugadores</string>
     <string name="title_activity_delete_players">Eliminar Jugadores</string>
     <string name="title_activity_preferences_user">Preferencias usuario</string>
+    <string name="title_activity_edition_player">EditionPlayerActivity</string>
+    
+    <!-- edition_player.xml -->
+    <string name="txt_edition">Edición</string>
+    <string name="txt_code_player">CODJUG</string>
+    <string name="for_retire">Para Jubilar</string>
+    <string name="age_player">Edad</string>
+    <string name="edit_text_age">edad</string>
 
 </resources>

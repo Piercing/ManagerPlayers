@@ -23,7 +23,7 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Set view content
-		setContentView(R.layout.show_screen_players_activity);
+		setContentView(R.layout.activity_show_screen_players);
 		// Get reference to button, sincronayze view-control
 		Button showScreenPlayersBtn = (Button) findViewById(R.id.btn_show_players);
 		// Set event by clicking on the button
@@ -35,7 +35,7 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 	}
 
 	@Override
-	// Add listener on click button
+	// Add listener when click button
 	public void onClick(View v) {
 		Log.v("Listener", "Calling show screen players on press button");
 		// Define activity by means of intents
@@ -62,8 +62,7 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 		int id = item.getItemId();
 		switch (id) {
 		case R.id.preferences:
-			// Launch activity PreferencesUserActivity, with creating a explicit
-			// intent
+			// Launch activity PreferencesUserActivity, with a explicit intent
 			Intent intentPreferences = new Intent(this, PreferencesUserActivity.class);
 			// We ask Android you launch the explicit intent to display the
 			// screen

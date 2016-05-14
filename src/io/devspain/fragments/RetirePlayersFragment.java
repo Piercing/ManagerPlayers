@@ -17,7 +17,7 @@ public class RetirePlayersFragment extends ListFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.retire_tab, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_retire_tab, container, false);
 
 		// Create adapter and set to ListView
 		ListAdapter adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players);
