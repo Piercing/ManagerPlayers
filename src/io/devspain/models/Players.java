@@ -1,58 +1,64 @@
 package io.devspain.models;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Players {
 
-	private String mName;
-	private int mAge;
-	private boolean mState;
-	private long mCode;
+	// Propiedad players que contiene una lista genérica de Player
+	List<Player> players;
 
-	public Players() {
-
+	private Players() {
 	}
 
-	public Players(String name, int age, boolean state, long codigo) {
-		super();
-		this.mName = name;
-		this.mAge = age;
-		this.mState = state;
-		this.mCode = codigo;
-	}
+	// Factory static method
+	public static Players createPlayers(List<Player> players) {
+		Players myPlayers = new Players();
 
-	public String getName() {
-		return mName;
-	}
-
-	public void setName(String name) {
-		this.mName = name;
-	}
-
-	public int getAge() {
-		return mAge;
-	}
-
-	public void setAge(int age) {
-		if (age >= 16 || age <= 50) {
-			this.mAge = age;
-		} else {
-			return;
+		// Recorro la lista de players que recibo como parámetro
+		for (Player n : players) {
+			// Llamo al método 'add' con la instancia que me he creado, pasándole cada player de la lista
+			// El método 'add' llama a su vez al método 'getPlayers', al cual le  añadimos el player que
+			// le pasamos a la lista que creamos dentro de él 'players', el cual nos devuelve la lista de
+			// los players que contiene, más el que le hemos pasado como parámetro.
+			myPlayers.add(n);
 		}
+
+		// Return list players
+		return myPlayers;
 	}
 
-	public boolean getState() {
-		return mState;
+	public int size() {
+		return getPlayers().size();
 	}
 
-	public void setState(boolean state) {
-		this.mState = state;
+	public Player get(int index) {
+		return getPlayers().get(index);
 	}
 
-	public long getCode() {
-		return mCode;
+	public void delete(Player player) {
+		getPlayers().remove(player);
 	}
 
-	public void setCode(long code) {
-		this.mCode = code;
+	public void remove(Player player) {
+
 	}
 
+	// Método para añadir un player a la lista.
+	// Llamo a al método getPlayers y le añado
+	// el player que recibo como parámetro ya que es de tipo List.
+	private void add(Player n) {
+		getPlayers().add(n);
+	}
+
+	// Getter
+	public List<Player> getPlayers() {
+		// Compruebo si no contiene nada la lista players
+		if (this.players == null) {
+			// Si es null, creo una nueva lista
+			this.players = new LinkedList<Player>();
+		}
+		// Devuelvo la lista con los players
+		return this.players;
+	}
 }

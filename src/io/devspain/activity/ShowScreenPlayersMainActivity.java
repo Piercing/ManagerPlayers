@@ -19,6 +19,8 @@ import io.devspain.R;
  */
 public class ShowScreenPlayersMainActivity extends Activity implements OnClickListener {
 
+	public static boolean flagPreferencesManager = false;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +34,8 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 		// This method saves all attribute values defaultValue preferences in
 		// SharedPreferences.
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+		// Set default values tue
+		flagPreferencesManager = true;
 
 		// String position = PlayersData.totalNamesPlayers.get(0);
 		// Log.v("positon", position);

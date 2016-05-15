@@ -35,7 +35,7 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
 
-		// First tab show engage Players
+		// First tab show engage Player
 		if (tab.getPosition() == 0) {
 			EngagePlayersFragment engage = new EngagePlayersFragment();
 			getSupportFragmentManager().beginTransaction().replace(R.id.container, engage).commit();
