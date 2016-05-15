@@ -32,6 +32,9 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 		// This method saves all attribute values defaultValue preferences in
 		// SharedPreferences.
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
+		// String position = PlayersData.totalNamesPlayers.get(0);
+		// Log.v("positon", position);
 	}
 
 	@Override
