@@ -2,13 +2,17 @@ package io.devspain.models;
 
 public class Player {
 
-	private String mName;
-	private int mAge;
-	private boolean mState;
-	private long mCode;
+	private String	mName;
+	private int		mAge;
+	private boolean	mState;
+	private long	mCode;
 
 	public Player() {
 		// disabled defalut contructor, customer requirement
+	}
+
+	public Player(String name) {
+		this.mName = name;
 	}
 
 	public Player(String name, int age, boolean state, long codigo) {
