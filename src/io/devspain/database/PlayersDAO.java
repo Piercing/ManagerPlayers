@@ -39,8 +39,6 @@ public class PlayersDAO {
 		// For each insertion I assign the code to the player new
 		player.setCode(code);
 		db.close();
-		// Object release
-		db = null;
 
 		// Return code autogenerate for each player.
 		return code;
@@ -67,12 +65,10 @@ public class PlayersDAO {
 		// this.getContentValues(player), KEY_PLAYER_CODE + "=" + code, null);
 
 		db.close();
-		db = null;
 		return NumberOfRowsUpdate;
 	}
 
-	// Delete table players or delete player with clause WHERE ==>
-	// KEY_PLAYER_CODE + " = " + code
+	// Delete table players or delete player with clause WHERE ==> KEY_PLAYER_CODE + " = " + code
 	public void delete(long code) {
 		if (code == INVALID_CODE_DELETE_ALL_RECORDS) {
 			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, null, null);
@@ -80,7 +76,6 @@ public class PlayersDAO {
 			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, DBConstants.KEY_PLAYER_CODE + " = " + code, null);
 		}
 		db.close();
-		db = null;
 	}
 
 	// Call to delete method, if code = 0, delete TABLE PLAYERS
@@ -106,7 +101,7 @@ public class PlayersDAO {
 	/**
 	 * Returns a Player object from its code
 	 * 
-	 * @param code
+	 * @param code,
 	 *            the player code in db
 	 * @return Player object if found, null otherwise
 	 */
@@ -139,12 +134,10 @@ public class PlayersDAO {
 	 */
 	public Cursor queryCursor() {
 		// SELECT
-		// Get cursor of read for all columns orderBy Code, equals 'SELECT *'
-		// public Cursor query(String table, String[] columns, String
-		// selection,String[] selectionArgs, String groupBy, String having,
-		// String orderBy)
+		// Get cursor of read for all columns orderBy Code, equals 'SELECT *' public Cursor query(String table, String[] columns, String
+		// selection,String[] selectionArgs, String groupBy, String having, String orderBy)
 		Cursor cursor = db.getReadableDatabase().query(DBConstants.TABLE_PLAYERS, DBConstants.allColumns, null, null, null, null,
-				DBConstants.KEY_PLAYER_CODE);
+				DBConstants.KEY_PLAYER_NAME);
 		return cursor;
 	}
 
