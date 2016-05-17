@@ -73,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		// Called everytime a DB connection is opened. We activate foreing keys
 		// to have ON_CASCADE deletion
 		// If API LEVEL < 16, use this
-		db.execSQL("PRAGMA foreign_keys = ON");
+		// db.execSQL("PRAGMA foreign_keys = ON");
 
 		// If API LEVEL > 16, use this
 		db.setForeignKeyConstraintsEnabled(true);
@@ -82,7 +82,6 @@ public class DBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		createDB(db);
-
 	}
 
 	@Override

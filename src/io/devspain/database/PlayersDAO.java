@@ -77,8 +77,7 @@ public class PlayersDAO {
 		if (code == INVALID_CODE_DELETE_ALL_RECORDS) {
 			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, null, null);
 		} else {
-			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, DBConstants.KEY_PLAYER_CODE + " = " + code,
-					null);
+			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, DBConstants.KEY_PLAYER_CODE + " = " + code, null);
 		}
 		db.close();
 		db = null;
@@ -117,8 +116,7 @@ public class PlayersDAO {
 		// Clausule where
 		String where = DBConstants.KEY_PLAYER_CODE + "=" + code;
 		// Get data from table players, where the code is that I receive as parameter
-		Cursor cursor = db.getReadableDatabase().query(DBConstants.TABLE_PLAYERS, DBConstants.allColumns, where, null,
-				null, null, null);
+		Cursor cursor = db.getReadableDatabase().query(DBConstants.TABLE_PLAYERS, DBConstants.allColumns, where, null, null, null, null);
 		if (cursor != null) {
 			if (cursor.getCount() > 0) {
 				cursor.moveToFirst();
@@ -145,8 +143,8 @@ public class PlayersDAO {
 		// public Cursor query(String table, String[] columns, String
 		// selection,String[] selectionArgs, String groupBy, String having,
 		// String orderBy)
-		Cursor cursor = db.getReadableDatabase().query(DBConstants.TABLE_PLAYERS, DBConstants.allColumns, null, null,
-				null, null, DBConstants.KEY_PLAYER_CODE);
+		Cursor cursor = db.getReadableDatabase().query(DBConstants.TABLE_PLAYERS, DBConstants.allColumns, null, null, null, null,
+				DBConstants.KEY_PLAYER_CODE);
 		return cursor;
 	}
 
@@ -191,7 +189,7 @@ public class PlayersDAO {
 		int stateConvertInt = DBHelper.convertStringToInt(state);
 		Boolean stateConvertBool = DBHelper.convertIntToBoolean(stateConvertInt);
 
-		// Build the player obtained
+		// Build the obtained player
 		Player player = new Player(name, age, stateConvertBool, code);
 		// Return player, inmutable reference
 		return player;

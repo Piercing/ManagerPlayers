@@ -18,7 +18,7 @@
         <MultiSelectListPreference
             android:dialogTitle="Juadores transferibles"
             android:entries="@array/transfer_players"
-            android:entryValues="@array/cod_player_transfer"
+            android:entryValues="@array/transfer_players"
             android:key="transfer_players"
             android:summary="Se muestran todos aquellos jugadores en estado transferible"
             android:title="Juagadores Transferibles" />
@@ -28,7 +28,7 @@
         <MultiSelectListPreference
             android:dialogTitle="Juadores rentables"
             android:entries="@array/profitable_players"
-            android:entryValues="@array/cod_player_profitable"
+            android:entryValues="@array/profitable_players"
             android:key="profitable_players"
             android:summary="Se muestran todos aquellos jugadores que son rentables"
             android:title="Juagadores Rentables" />
@@ -38,7 +38,7 @@
         <MultiSelectListPreference
             android:dialogTitle="Juadores desastrosos"
             android:entries="@array/disastrous_players"
-            android:entryValues="@array/cod_player_disastrous"
+            android:entryValues="@array/disastrous_players"
             android:key="disastrous_players"
             android:summary="Se muestran todos aquellos jugadores que son un desastre"
             android:title="Juagadores Desastrosos" />
