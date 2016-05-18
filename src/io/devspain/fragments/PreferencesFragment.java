@@ -16,16 +16,15 @@ import android.view.ViewGroup;
 import io.devspain.R;
 import io.devspain.database.DBConstants;
 import io.devspain.database.PlayersDAO;
-import io.devspain.models.Player;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class PreferencesFragment extends PreferenceFragment {
 
-	static Set<String>	transferPlayers		= null;
-	static Set<String>	profitablePlayers	= null;
-	static Set<String>	disastrousPlayers	= null;
-	static String		nameUser			= null;
-	PlayersDAO			playersDao;
+	public static Set<String>	transferPlayers		= null;
+	public static Set<String>	profitablePlayers	= null;
+	public static Set<String>	disastrousPlayers	= null;
+	public static String		nameUser			= null;
+	PlayersDAO					playersDao;
 
 	// Default constructor
 	public PreferencesFragment() {
@@ -40,27 +39,12 @@ public class PreferencesFragment extends PreferenceFragment {
 		addPreferencesFromResource(R.xml.preferences);
 
 		// Get data Preferences
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
 		nameUser = preferences.getString("name", "");
 		transferPlayers = preferences.getStringSet("transfer_players", new HashSet<String>());
 		profitablePlayers = preferences.getStringSet("profitable_players", new HashSet<String>());
 		disastrousPlayers = preferences.getStringSet("disastrous_players", new HashSet<String>());
-
-		for (String playerTP : transferPlayers) {
-			Player playerTransfer = new Player(playerTP);
-			playersDao.insert(playerTransfer);
-		}
-
-		for (String playerPP : profitablePlayers) {
-			Player playerProfitable = new Player(playerPP);
-			playersDao.insert(playerProfitable);
-		}
-
-		for (String playerDP : disastrousPlayers) {
-			Player playerDisastrous = new Player(playerDP);
-			playersDao.insert(playerDisastrous);
-		}
 
 		// if (nameUser == null && transferPlayers == null && profitablePlayers == null && disastrousPlayers == null) {
 		// ShowScreenPlayersMainActivity.flagPreferencesManager = false;

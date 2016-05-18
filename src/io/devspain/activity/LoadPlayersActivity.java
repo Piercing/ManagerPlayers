@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import io.devspain.R;
 import io.devspain.database.PlayersDAO;
+import io.devspain.fragments.PreferencesFragment;
+import io.devspain.models.Player;
 import io.devspain.models.Players;
 
 public class LoadPlayersActivity extends Activity {
@@ -15,6 +17,21 @@ public class LoadPlayersActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_load_players);
+
+		for (String playerTP : PreferencesFragment.transferPlayers) {
+			Player playerTransfer = new Player(playerTP);
+			playersDao.insert(playerTransfer);
+		}
+
+		for (String playerPP : PreferencesFragment.profitablePlayers) {
+			Player playerProfitable = new Player(playerPP);
+			playersDao.insert(playerProfitable);
+		}
+
+		for (String playerDP : PreferencesFragment.disastrousPlayers) {
+			Player playerDisastrous = new Player(playerDP);
+			playersDao.insert(playerDisastrous);
+		}
 
 		// Get names players DDBB
 		Players list = playersDao.query();
