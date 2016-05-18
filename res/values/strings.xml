@@ -29,5 +29,8 @@
     <string name="for_retire">Para Jubilar</string>
     <string name="age_player">Edad</string>
     <string name="edit_text_age">edad</string>
+    
+    <!-- activity edition players -->
+    <string name="btn_save_changes_players">Guardar datos</string>
 
 </resources>

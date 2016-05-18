@@ -72,7 +72,7 @@
         android:layout_marginTop="14dp"
         android:layout_toEndOf="@+id/checkbox_retire"
         android:text="@string/age_player"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editText1"
@@ -86,5 +86,14 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/btn_save_changes_players"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="56dp"
+        android:text="@string/btn_save_changes_players" />
 
 </RelativeLayout>

@@ -10,6 +10,7 @@ public class PreferencesUserActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.add(android.R.id.content, new PreferencesFragment());
 		ft.commit();// DON'T FORGET!!!

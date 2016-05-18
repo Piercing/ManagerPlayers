@@ -2,6 +2,7 @@ package io.devspain.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import io.devspain.R;
 import io.devspain.database.PlayersDAO;
 import io.devspain.models.Players;
 
@@ -13,7 +14,7 @@ public class LoadPlayersActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_load_players);
+		setContentView(R.layout.activity_load_players);
 
 		// Get names players DDBB
 		Players list = playersDao.query();

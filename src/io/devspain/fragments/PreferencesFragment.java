@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import io.devspain.R;
-import io.devspain.activity.ShowScreenPlayersMainActivity;
 import io.devspain.database.DBConstants;
 import io.devspain.database.PlayersDAO;
 import io.devspain.models.Player;
@@ -38,7 +40,8 @@ public class PreferencesFragment extends PreferenceFragment {
 		addPreferencesFromResource(R.xml.preferences);
 
 		// Get data Preferences
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
 		nameUser = preferences.getString("name", "");
 		transferPlayers = preferences.getStringSet("transfer_players", new HashSet<String>());
 		profitablePlayers = preferences.getStringSet("profitable_players", new HashSet<String>());
@@ -59,18 +62,25 @@ public class PreferencesFragment extends PreferenceFragment {
 			playersDao.insert(playerDisastrous);
 		}
 
-		if (nameUser == null && transferPlayers == null && profitablePlayers == null && disastrousPlayers == null) {
-			ShowScreenPlayersMainActivity.flagPreferencesManager = false;
-		} else {
-			if (nameUser != null || transferPlayers != null || profitablePlayers != null || disastrousPlayers != null) {
-				ShowScreenPlayersMainActivity.flagPreferencesManager = true;
-			}
-		}
+		// if (nameUser == null && transferPlayers == null && profitablePlayers == null && disastrousPlayers == null) {
+		// ShowScreenPlayersMainActivity.flagPreferencesManager = false;
+		// } else {
+		// if (nameUser != null || transferPlayers != null || profitablePlayers != null || disastrousPlayers != null) {
+		// ShowScreenPlayersMainActivity.flagPreferencesManager = true;
+		// }
+		// }
 
-		Log.v("", "name: " + nameUser);
-		Log.v("", "profitable_players: " + transferPlayers);
-		Log.v("", "disastrous_players: " + disastrousPlayers);
-		Log.v("", "profitable_players: " + profitablePlayers);
+		// System.out.println("name: " + nameUser);
+		// System.out.println("profitable_players: " + transferPlayers);
+		// System.out.println("disastrous_players: " + disastrousPlayers);
+		// System.out.println("profitable_players: " + profitablePlayers);
+
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		return super.onCreateView(inflater, container, savedInstanceState);
 
 	}
 
