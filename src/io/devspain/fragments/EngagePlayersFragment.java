@@ -1,5 +1,6 @@
 package io.devspain.fragments;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -31,7 +32,7 @@ public class EngagePlayersFragment extends ListFragment {
 	Bundle bundle = getArguments();
 	// String getDataRowPlayer = bundle.getString("str");
 
-	private List<String> mList;
+	private List<String> mList = new ArrayList<String>();
 
 	// Instance Interface
 	private OnPlayerSelectedListener listener;
@@ -44,7 +45,7 @@ public class EngagePlayersFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 
 		// Set List Adapter ==> mList, first time list empty
-		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players));
+		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mList));
 		// If not data, update data Players
 		updatePlayersData();
 	}
@@ -59,7 +60,7 @@ public class EngagePlayersFragment extends ListFragment {
 			} else if (mPlayers.getPlayers() != null) {
 				// Aquí tenemos datos, en vez de una lista vacía le paso
 				// lo que hay en la namePlayers y los mostramos en la lista
-				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, namePlayers));
+				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players));
 
 			} else {
 				Builder alertDialog = new AlertDialog.Builder(getActivity().getApplicationContext());
