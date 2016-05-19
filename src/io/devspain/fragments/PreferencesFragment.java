@@ -10,9 +10,6 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import io.devspain.R;
 import io.devspain.database.DBConstants;
 import io.devspain.database.PlayersDAO;
@@ -28,7 +25,6 @@ public class PreferencesFragment extends PreferenceFragment {
 
 	// Default constructor
 	public PreferencesFragment() {
-
 	}
 
 	@Override
@@ -41,32 +37,17 @@ public class PreferencesFragment extends PreferenceFragment {
 		// Get data Preferences
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
+		// Get parameter of players & user
 		nameUser = preferences.getString("name", "");
 		transferPlayers = preferences.getStringSet("transfer_players", new HashSet<String>());
 		profitablePlayers = preferences.getStringSet("profitable_players", new HashSet<String>());
 		disastrousPlayers = preferences.getStringSet("disastrous_players", new HashSet<String>());
-
-		// if (nameUser == null && transferPlayers == null && profitablePlayers == null && disastrousPlayers == null) {
-		// ShowScreenPlayersMainActivity.flagPreferencesManager = false;
-		// } else {
-		// if (nameUser != null || transferPlayers != null || profitablePlayers != null || disastrousPlayers != null) {
-		// ShowScreenPlayersMainActivity.flagPreferencesManager = true;
-		// }
-		// }
-
-		// System.out.println("name: " + nameUser);
-		// System.out.println("profitable_players: " + transferPlayers);
-		// System.out.println("disastrous_players: " + disastrousPlayers);
-		// System.out.println("profitable_players: " + profitablePlayers);
-
 	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		return super.onCreateView(inflater, container, savedInstanceState);
-
-	}
+	// @Override
+	// public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	// return super.onCreateView(inflater, container, savedInstanceState);
+	// }
 
 	/**
 	 * Check application startup

@@ -172,7 +172,7 @@ public class PlayersDAO {
 		// Activo la aserción
 		assert cursor != null;
 
-		// Get the number of read column, final ==> inmutable data
+		// Get the index of read column, final ==> inmutable data
 		final String name = cursor.getString(cursor.getColumnIndex(DBConstants.KEY_PLAYER_NAME));
 		final int age = cursor.getInt(cursor.getColumnIndex(DBConstants.KEY_PLAYER_AGE));
 		final long code = cursor.getLong(cursor.getColumnIndex(DBConstants.KEY_PLAYER_CODE));

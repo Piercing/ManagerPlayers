@@ -14,6 +14,9 @@ import io.devspain.fragments.EngagePlayersFragment.OnPlayerSelectedListener;
 import io.devspain.fragments.RetirePlayersFragment;
 
 public class PlayersScreenActivity extends FragmentActivity implements ActionBar.TabListener, OnPlayerSelectedListener {
+	// Crear nuevo objeto PlayersDataSource para que se cree la BBDD
+	// PlayersDataSource datasource = new PlayersDataSource(this);
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,9 +29,6 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 		// Add the tabs
 		ab.addTab(ab.newTab().setText("Para Jubilar").setTabListener(this));
 		ab.addTab(ab.newTab().setText("para Fichar").setTabListener(this));
-
-		// Charge the layout of fragmente
-		setContentView(R.layout.activity_edition_player);
 
 		FragmentManager FM = getFragmentManager();
 		FragmentTransaction FT = FM.beginTransaction();
