@@ -44,8 +44,12 @@ public class EngagePlayersFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		mList.add("Cargar jugadores en el menú preferencias desde la pantalla de incio");
+
 		// Set List Adapter ==> mList, first time list empty
 		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mList));
+
+		// TODO: si el usuario selecciona "cargar juadores" llamar a "updatePlayersData"
 		// If not data, update data Players
 		updatePlayersData();
 	}
@@ -53,7 +57,7 @@ public class EngagePlayersFragment extends ListFragment {
 	public void updatePlayersData() {
 
 		try {
-			// Comprobamos si tenemos datos, si no tenemos datos los obtemos
+			// Check if no data, get if not data
 			if (mPlayers.getPlayers() == null) {
 				getPlayers();
 
