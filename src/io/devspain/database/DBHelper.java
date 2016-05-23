@@ -54,9 +54,9 @@ public class DBHelper extends SQLiteOpenHelper {
 	// If not created the instance creates an instance, and if the instance is created returns that there was.
 
 	public static DBHelper getInstance() {
-		// If I have no the name && context, call method 'configure'
+		// If I don't have the name && context, call method 'configure'
 		if (dbName == null && weakContext == null) {
-			throw new IllegalStateException("No database name privide, no context");
+			throw new IllegalStateException("No database name provide, no context");
 		}
 		// Use the application context, which will ensure that you don't accidentally leak an Activity's context.
 		if (sInstance == null) {

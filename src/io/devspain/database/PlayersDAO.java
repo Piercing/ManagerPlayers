@@ -19,7 +19,7 @@ public class PlayersDAO {
 
 	// No code player can be zero
 	private static final long	INVALID_CODE_DELETE_ALL_RECORDS	= 0;
-	private DBHelper			db;
+	private static DBHelper		db;
 
 	// Constructor for PlayersDAO
 	public PlayersDAO() {
@@ -27,7 +27,7 @@ public class PlayersDAO {
 		db = DBHelper.getInstance();
 	}
 
-	public long insert(Player player) {
+	public static long insert(Player player) {
 		// Check it player exist
 		if (player == null) {
 			throw new IllegalArgumentException("Passing NULL player");
@@ -69,7 +69,7 @@ public class PlayersDAO {
 	}
 
 	// Delete table players or delete player with clause WHERE ==> KEY_PLAYER_CODE + " = " + code
-	public void delete(long code) {
+	public static void delete(long code) {
 		if (code == INVALID_CODE_DELETE_ALL_RECORDS) {
 			db.getWritableDatabase().delete(DBConstants.TABLE_PLAYERS, null, null);
 		} else {

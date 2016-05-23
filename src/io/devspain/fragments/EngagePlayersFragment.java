@@ -17,16 +17,16 @@ import android.widget.ListView;
 import android.widget.Toast;
 import io.devspain.R;
 import io.devspain.database.PlayersDAO;
-import io.devspain.models.Player;
 import io.devspain.models.Players;
 
 public class EngagePlayersFragment extends ListFragment {
+
 	String[] players = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
 			"Branislav Ivanovic" };
 
 	public static String[]	namePlayers;
 	PlayersDAO				playersDao;
-	Players					mPlayers;
+	Players					mPlayers	= new Players();
 
 	// String[] dataNamesPlayers = LoadPlayersActivity.namePlayers;
 	Bundle bundle = getArguments();
@@ -37,34 +37,26 @@ public class EngagePlayersFragment extends ListFragment {
 	// Instance Interface
 	private OnPlayerSelectedListener listener;
 
-	// Crear nuevo objeto PlayersDataSource para que se cree la BBDD
-	// PlayersDataSource datasource = new PlayersDataSource(getActivity().getApplicationContext());
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		mList.add("Cargar jugadores en el menú preferencias desde la pantalla de incio");
-
-		// Set List Adapter ==> mList, first time list empty
-		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mList));
-
-		// TODO: si el usuario selecciona "cargar juadores" llamar a "updatePlayersData"
-		// If not data, update data Players
 		updatePlayersData();
 	}
 
+	// TODO: REFACTOR
 	public void updatePlayersData() {
 
+		// Text for the list emtpy
+		mList.add("Cargar jugadores en el menú preferencias desde la pantalla de incio para verlos");
+		// Set List Adapter ==> mList, first time empty list
+		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players));
 		try {
-			// Check if no data, get if not data
-			if (mPlayers.getPlayers() == null) {
-				getPlayers();
 
-			} else if (mPlayers.getPlayers() != null) {
+			if (Players.getPlayersListToArrayPlayers() != null) {
 				// Aquí tenemos datos, en vez de una lista vacía le paso
 				// lo que hay en la namePlayers y los mostramos en la lista
-				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players));
+				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, namePlayers));
 
 			} else {
 				Builder alertDialog = new AlertDialog.Builder(getActivity().getApplicationContext());
@@ -73,7 +65,7 @@ public class EngagePlayersFragment extends ListFragment {
 				alertDialog.setPositiveButton("Reintentar", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// Si pulsa en reintentar la descarga o la conexión volvemos a llamar al método:
+						// Si pulsa en reintentar la descarga o la conexión volvemos a llamarnos
 						updatePlayersData();
 					}
 				});
@@ -83,46 +75,18 @@ public class EngagePlayersFragment extends ListFragment {
 		}
 	}
 
-	public void insertDataPlayers() {
-		try {
-			if (PreferencesFragment.transferPlayers != null) {
-				for (String playerTP : PreferencesFragment.transferPlayers) {
-					// Create new player witn only parameter => name
-					Player playerTransfer = new Player(playerTP);
-					playersDao.insert(playerTransfer);
-				}
-			}
-
-			if (PreferencesFragment.profitablePlayers != null) {
-				for (String playerPP : PreferencesFragment.profitablePlayers) {
-					Player playerProfitable = new Player(playerPP);
-					playersDao.insert(playerProfitable);
-				}
-			}
-
-			if (PreferencesFragment.disastrousPlayers != null) {
-				for (String playerDP : PreferencesFragment.disastrousPlayers) {
-					Player playerDisastrous = new Player(playerDP);
-					playersDao.insert(playerDisastrous);
-				}
-			}
-		} catch (Exception e) {
-			e.getStackTrace();
-		}
-	}
-
-	public String[] getPlayers() {
-
-		// Get names players DDBB
-		Players list = playersDao.query();
-
-		// Convert list to array of players
-		namePlayers = new String[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			namePlayers[i] = list.get(i).getName();
-		}
-		return namePlayers;
-	}
+	// public String[] getPlayersQuery() {
+	//
+	// // Get names players DDBB
+	// Players list = playersDao.query();
+	//
+	// // Convert list to array of players
+	// namePlayers = new String[list.size()];
+	// for (int i = 0; i < list.size(); i++) {
+	// namePlayers[i] = list.get(i).getName();
+	// }
+	// return namePlayers;
+	// }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -140,7 +104,6 @@ public class EngagePlayersFragment extends ListFragment {
 		listener.onPlayerSelected(players[position]);
 
 		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
-
 	}
 
 	@Override

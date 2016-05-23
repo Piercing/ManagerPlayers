@@ -2,6 +2,7 @@ package io.devspain.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -11,7 +12,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import io.devspain.R;
 import io.devspain.database.PlayersDAO;
+import io.devspain.database.PlayersSQLiteHelper;
 import io.devspain.fragments.EngagePlayersFragment;
+import io.devspain.fragments.PreferencesFragment;
+import io.devspain.models.Player;
 
 /**
  * 
@@ -23,6 +27,11 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 	public static boolean	flagPreferencesManager	= false;
 	EngagePlayersFragment	loadPlayers;
 	PlayersDAO				playersDao;
+	private SQLiteDatabase	db;
+
+	Player	playerTransfer;
+	Player	playerProfitable;
+	Player	playerDisastrous;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +43,15 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 		// Set event by clicking on the button
 		showScreenPlayersBtn.setOnClickListener(this);
 
-		// This method saves all attribute values defaultValue preferences in
-		// SharedPreferences.
+		// This method saves all attribute values defaultValue preferences in SharedPreferences.
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 		// Set default values tue
 		flagPreferencesManager = true;
+
+		// Open DDBB writing mode
+		PlayersSQLiteHelper playesDataBaseHelper = new PlayersSQLiteHelper(this, "DBPlayers", null, 1);
+
+		db = playesDataBaseHelper.getWritableDatabase();
 
 		// String position = PlayersData.totalNamesPlayers.get(0);
 		// Log.v("positon", position);
@@ -65,6 +78,7 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 	// It tells what happens when you press a menu option
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+
 		// Always call first super
 		boolean returnSuper = super.onOptionsItemSelected(item);
 
@@ -74,19 +88,65 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 		case R.id.preferences:
 			// Launch activity PreferencesUserActivity, with a explicit intent
 			Intent intentPreferences = new Intent(this, PreferencesUserActivity.class);
-			// We ask Android you launch the explicit intent to display the
-			// screen
+			// We ask Android you launch the explicit intent to display the screen
 			startActivity(intentPreferences);
 			break;
 
 		case R.id.load_players:
-			// Get playes of Preferences user
-			loadPlayers.insertDataPlayers();
+
+			// TODO: REFACTOR
+			// Get values of Preferences
+			if (PreferencesFragment.transferPlayers != null) {
+				for (String playerTP : PreferencesFragment.transferPlayers) {
+					// Create new player witn only parameter => name & insert to DDBB
+					playerTransfer = new Player(playerTP);
+				}
+			}
+
+			if (PreferencesFragment.profitablePlayers != null) {
+				for (String playerPP : PreferencesFragment.profitablePlayers) {
+					playerProfitable = new Player(playerPP);
+				}
+			}
+
+			if (PreferencesFragment.disastrousPlayers != null) {
+				for (String playerDP : PreferencesFragment.disastrousPlayers) {
+					playerDisastrous = new Player(playerDP);
+				}
+			}
+
+			try {
+				// Insert players name into DDBB
+				PlayersDAO.insert(playerTransfer);
+				PlayersDAO.insert(playerProfitable);
+				PlayersDAO.insert(playerDisastrous);
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+
+			// Save playes of user Preferences
+			// loadPlayers.insertDataPlayers();
 			break;
 
 		case R.id.delete_players:
+
+			// TODO: REFACTOR
+			try {
+				// Get all code players
+				long codeTransfer = playerTransfer.getCode();
+				long codeProfitable = playerProfitable.getCode();
+				long codeDisastrous = playerDisastrous.getCode();
+				// Delete players DDBB
+				PlayersDAO.delete(codeTransfer);
+				PlayersDAO.delete(codeProfitable);
+				PlayersDAO.delete(codeDisastrous);
+
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+
 			// Delete players of DDBB
-			playersDao.deleteAll();
+			// playersDao.deleteAll();
 			break;
 
 		default:
