@@ -27,7 +27,7 @@ public class EngagePlayersFragment extends ListFragment implements Serializable 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	String[] playersRetire = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
+	String[] playersEngage = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
 			"Branislav Ivanovic", "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
 			"Branislav Ivanovic" };
 
@@ -77,12 +77,12 @@ public class EngagePlayersFragment extends ListFragment implements Serializable 
 		// Set List Adapter ==> mList, first time empty list
 		try {
 			if (getPlayersListToArrayPlayers() == null) {
-				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, playersRetire));
+				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, playersEngage));
 
 			} else if (getPlayersListToArrayPlayers() != null) {
 				// Aquí tenemos datos, en vez de una lista vacía le paso
 				// lo que hay en la namePlayers y los mostramos en la lista
-				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, playersRetire));
+				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, playersEngage));
 
 			} else {
 				Builder alertDialog = new AlertDialog.Builder(getActivity().getApplicationContext());

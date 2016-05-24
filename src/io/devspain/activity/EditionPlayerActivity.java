@@ -18,14 +18,18 @@ import io.devspain.models.Players;
 
 public class EditionPlayerActivity extends Activity implements android.view.View.OnClickListener {
 
-	int			code	= 0;
-	Bundle		parameters;
-	Player		player;
-	TextView	playerAge;
-	TextView	playerCode;
-	TextView	playerName;
-	TextView	playerState;
-	CheckBox	checkBoxRetire;
+	int				code	= 0;
+	Bundle			parameters;
+	Player			player;
+	TextView		playerAge;
+	TextView		playerCode;
+	TextView		playerName;
+	TextView		playerState;
+	CheckBox		checkBoxRetire;
+	ContentValues	values;
+	Players			players;
+	int				castIndexToInt;
+	long			castCodeToInt;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +38,34 @@ public class EditionPlayerActivity extends Activity implements android.view.View
 		// Charge the layout
 		setContentView(R.layout.activity_edition_player);
 
-		// Synchronize activity/view
-		playerCode = (TextView) findViewById(R.id.player_code);
-		playerState = (TextView) findViewById(R.id.player_state);
-		playerName = (TextView) findViewById(R.id.player_name);
-		checkBoxRetire = (CheckBox) findViewById(R.id.checkbox_retire);
-		playerAge = (TextView) findViewById(R.id.player_state);
+		if (PlayersScreenActivity.tab.getPosition() == 0) {
+			// Synchronize activity/view
+			playerCode = (TextView) findViewById(R.id.player_code);
+			playerState = (TextView) findViewById(R.id.player_state);
+			playerName = (TextView) findViewById(R.id.player_name);
+			checkBoxRetire = (CheckBox) findViewById(R.id.checkbox_retire);
+			playerAge = (TextView) findViewById(R.id.player_state);
 
-		// Obtain the intent of coming
-		parameters = getIntent().getExtras();
-		if (parameters != null) {
-			playerName.setText(parameters.getString("name"));
+			// Obtain the intent of coming
+			parameters = getIntent().getExtras();
+			if (parameters != null) {
+				playerName.setText(parameters.getString("name"));
+			}
+		}
+
+		if (PlayersScreenActivity.tab.getPosition() == 1) {
+			// Synchronize activity/view
+			playerCode = (TextView) findViewById(R.id.player_code);
+			playerState = (TextView) findViewById(R.id.player_state);
+			playerName = (TextView) findViewById(R.id.player_name);
+			checkBoxRetire = (CheckBox) findViewById(R.id.checkbox_retire);
+			playerAge = (TextView) findViewById(R.id.player_state);
+
+			// Obtain the intent of coming
+			parameters = getIntent().getExtras();
+			if (parameters != null) {
+				playerName.setText(parameters.getString("name"));
+			}
 		}
 
 		// Creat a button
@@ -57,19 +78,25 @@ public class EditionPlayerActivity extends Activity implements android.view.View
 	@Override
 	public void onClick(View v) {
 
-		ContentValues values = new ContentValues();
-
+		values = new ContentValues();
 		// Query at DDBB
-		Players players = PlayersDAO.query();
+		players = PlayersDAO.query();
 		// Get the position of EngagePlayersFragment
 		String index = EngagePlayersFragment.itemValue;
 		// Cast positon String to int
-		int castIndexToInt = DBHelper.convertStringToInt(index);
+		castIndexToInt = DBHelper.convertStringToInt(index);
 		// Cast data textView code
-		long castCodeToInt = DBHelper.convertStringToInt((String) playerCode.getText());
+		castCodeToInt = DBHelper.convertStringToInt((String) playerCode.getText());
+		// Uodate player in DDBB
+		updatePlayersDB();
+	}
+
+	private void updatePlayersDB() {
+
 		// Iterate the query results
 		for (int i = 0; i < players.size(); i++) {
 
+			// Get position & code of player selected
 			player = players.getPlayers().get(castIndexToInt);
 			code = (int) players.getPlayers().get(castIndexToInt).getCode();
 
@@ -80,21 +107,20 @@ public class EditionPlayerActivity extends Activity implements android.view.View
 				// Check value age
 				if (ageToInt >= 16 || ageToInt <= 50) {
 					values.put(DBConstants.KEY_PLAYER_AGE, ageToInt);
-					// If checkBox is checked
-					if (checkBoxRetire.isChecked()) {
-						// State player is for "Para Jubilar"
-						values.put(DBConstants.KEY_PLAYER_STATE, "Para Jubilar");
-					} else {
-						// Else, player is for "Para Retirar"
-						values.put(DBConstants.KEY_PLAYER_STATE, "Para Retirar");
-					}
+				}
+				// If checkBox is checked
+				if (checkBoxRetire.isChecked()) {
+					// State player is for "Para Jubilar"
+					values.put(DBConstants.KEY_PLAYER_STATE, "Para Jubilar");
+				} else {
+					// Else, player is for "Para Retirar"
+					values.put(DBConstants.KEY_PLAYER_STATE, "Para Retirar");
 				}
 			}
 			if (player.equals(PreferencesFragment.disastrousPlayers)) {
 				putColors();
 			}
 		}
-
 		// Update player DDBB
 		PlayersDAO.update(code, player);
 	}

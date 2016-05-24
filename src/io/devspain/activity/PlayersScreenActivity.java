@@ -13,6 +13,7 @@ import io.devspain.fragments.RetirePlayersFragment;
 public class PlayersScreenActivity extends FragmentActivity implements ActionBar.TabListener {
 	// Crear nuevo objeto PlayersDataSource para que se cree la BBDD
 	// PlayersDataSource datasource = new PlayersDataSource(this);
+	public static Tab tab;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 
 	@Override
 	public void onTabSelected(Tab tab, FragmentTransaction ft) {
+
+		// Save reference to tab
+		PlayersScreenActivity.tab = tab;
 
 		// First tab show engage Player
 		if (tab.getPosition() == 0) {
