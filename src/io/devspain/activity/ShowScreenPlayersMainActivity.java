@@ -1,5 +1,7 @@
 package io.devspain.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,10 +26,11 @@ import io.devspain.models.Player;
  */
 public class ShowScreenPlayersMainActivity extends Activity implements OnClickListener {
 
-	public static boolean	flagPreferencesManager	= false;
-	EngagePlayersFragment	loadPlayers;
-	PlayersDAO				playersDao;
-	private SQLiteDatabase	db;
+	public static boolean		flagPreferencesManager	= false;
+	EngagePlayersFragment		loadPlayers;
+	PlayersDAO					playersDao;
+	private SQLiteDatabase		db;
+	public static List<Player>	mList;
 
 	Player	playerTransfer;
 	Player	playerProfitable;
@@ -100,18 +103,21 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 				for (String playerTP : PreferencesFragment.transferPlayers) {
 					// Create new player witn only parameter => name & insert to DDBB
 					playerTransfer = new Player(playerTP);
+					mList.add(playerTransfer);
 				}
 			}
 
 			if (PreferencesFragment.profitablePlayers != null) {
 				for (String playerPP : PreferencesFragment.profitablePlayers) {
 					playerProfitable = new Player(playerPP);
+					mList.add(playerProfitable);
 				}
 			}
 
 			if (PreferencesFragment.disastrousPlayers != null) {
 				for (String playerDP : PreferencesFragment.disastrousPlayers) {
 					playerDisastrous = new Player(playerDP);
+					mList.add(playerDisastrous);
 				}
 			}
 
@@ -148,9 +154,8 @@ public class ShowScreenPlayersMainActivity extends Activity implements OnClickLi
 			// Delete players of DDBB
 			// playersDao.deleteAll();
 			break;
-
 		default:
-			return true;
+			return returnSuper;
 		}
 
 		return returnSuper;

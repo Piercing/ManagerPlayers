@@ -44,7 +44,7 @@ public class PlayersDAO {
 		return code;
 	}
 
-	public int update(long code, Player player) {
+	public static int update(long code, Player player) {
 
 		if (player == null) {
 			throw new IllegalArgumentException("Passing NULL player");
@@ -132,7 +132,7 @@ public class PlayersDAO {
 	 * 
 	 * @return cursor with all records
 	 */
-	public Cursor queryCursor() {
+	public static Cursor queryCursor() {
 		// SELECT
 		// Get cursor of read for all columns orderBy Code, equals 'SELECT *' public Cursor query(String table, String[] columns, String
 		// selection,String[] selectionArgs, String groupBy, String having, String orderBy)
@@ -141,7 +141,7 @@ public class PlayersDAO {
 		return cursor;
 	}
 
-	public Players query() {
+	public static Players query() {
 		// List of player that contains players
 		List<Player> playerList = new LinkedList<Player>();
 
@@ -186,6 +186,11 @@ public class PlayersDAO {
 		Player player = new Player(name, age, stateConvertBool, code);
 		// Return player, inmutable reference
 		return player;
+	}
+
+	public static void update(String tablePlayers, ContentValues values, String selection, String[] selectionArgs) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

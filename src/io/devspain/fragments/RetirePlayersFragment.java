@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import io.devspain.R;
+import io.devspain.activity.EditionPlayerActivity;
 import io.devspain.database.PlayersDAO;
 import io.devspain.models.Players;
 
@@ -52,7 +54,7 @@ public class RetirePlayersFragment extends ListFragment {
 		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mList));
 		try {
 
-			if (Players.getPlayersListToArrayPlayers() != null) {
+			if (EngagePlayersFragment.getPlayersListToArrayPlayers() != null) {
 				// Aquí tenemos datos, en vez de una lista vacía le paso
 				// lo que hay en la namePlayers y los mostramos en la lista
 				setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, players));
@@ -98,9 +100,16 @@ public class RetirePlayersFragment extends ListFragment {
 	}
 
 	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		// We get the selected row (player)
-		// listener.onPlayerSelected(players[position]);
+	public void onListItemClick(ListView listView, View view, int position, long id) {
+
+		// Get string value where they click on the list
+		String itemValue = (String) listView.getItemAtPosition(position);
+		// Show new activity through a intent
+		Intent newActivity = new Intent(getActivity(), EditionPlayerActivity.class);
+		// Put:pass selected data to the activity with identifier
+		newActivity.putExtra("player", itemValue);
+		// Here we spend the parameter of intent previously created
+		startActivity(newActivity);
 
 		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
 

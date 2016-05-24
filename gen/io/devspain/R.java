@@ -9,14 +9,28 @@ package io.devspain;
 
 public final class R {
     public static final class array {
-        public static final int cod_player_disastrous=0x7f060001;
-        public static final int cod_player_profitable=0x7f060003;
-        public static final int cod_player_transfer=0x7f060005;
-        public static final int disastrous_players=0x7f060000;
-        public static final int profitable_players=0x7f060002;
-        public static final int transfer_players=0x7f060004;
+        public static final int cod_player_disastrous=0x7f070001;
+        public static final int cod_player_profitable=0x7f070003;
+        public static final int cod_player_transfer=0x7f070005;
+        public static final int disastrous_players=0x7f070000;
+        public static final int profitable_players=0x7f070002;
+        public static final int transfer_players=0x7f070004;
     }
     public static final class attr {
+    }
+    public static final class color {
+        public static final int AMARILLO=0x7f050009;
+        public static final int BLANCO=0x7f050000;
+        public static final int CELESTE=0x7f05000a;
+        public static final int COBALTO=0x7f05000b;
+        public static final int MORADO=0x7f050002;
+        public static final int NARANJA=0x7f050001;
+        public static final int NEGRO=0x7f050004;
+        public static final int PISTACHO=0x7f050003;
+        public static final int ROJO=0x7f050005;
+        public static final int ROSA=0x7f050006;
+        public static final int SALMON=0x7f050007;
+        public static final int VVIVO=0x7f050008;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -26,28 +40,28 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000a;
-        public static final int btn_save_changes_players=0x7f0a0007;
-        public static final int btn_show_players=0x7f0a0009;
-        public static final int checkbox_retire=0x7f0a0004;
-        public static final int container=0x7f0a0008;
-        public static final int delete_players=0x7f0a000e;
-        public static final int editText1=0x7f0a0006;
-        public static final int load_players=0x7f0a000d;
-        public static final int management_players=0x7f0a000c;
-        public static final int player_code=0x7f0a0001;
-        public static final int player_name=0x7f0a0003;
-        public static final int player_situation=0x7f0a0002;
-        public static final int preferences=0x7f0a000b;
-        public static final int txt_age=0x7f0a0005;
-        public static final int txt_edition=0x7f0a0000;
+        public static final int action_settings=0x7f0b000a;
+        public static final int btn_save_changes_players=0x7f0b0007;
+        public static final int btn_show_players=0x7f0b0009;
+        public static final int checkbox_retire=0x7f0b0004;
+        public static final int container=0x7f0b0008;
+        public static final int delete_players=0x7f0b000e;
+        public static final int load_players=0x7f0b000d;
+        public static final int management_players=0x7f0b000c;
+        public static final int player_age=0x7f0b0006;
+        public static final int player_code=0x7f0b0001;
+        public static final int player_name=0x7f0b0003;
+        public static final int player_state=0x7f0b0002;
+        public static final int preferences=0x7f0b000b;
+        public static final int txt_age=0x7f0b0005;
+        public static final int txt_edition=0x7f0b0000;
     }
     public static final class layout {
         public static final int activity_delete_players=0x7f030000;
@@ -61,42 +75,42 @@ public final class R {
         public static final int fragment_retire_tab=0x7f030008;
     }
     public static final class menu {
-        public static final int edition_player=0x7f090000;
-        public static final int menu=0x7f090001;
+        public static final int edition_player=0x7f0a0000;
+        public static final int menu=0x7f0a0001;
     }
     public static final class string {
-        public static final int action_settings=0x7f070001;
-        public static final int age_player=0x7f070011;
+        public static final int action_settings=0x7f080001;
+        public static final int age_player=0x7f080011;
         /**  Title ActioBar 
          */
-        public static final int app_name=0x7f070003;
+        public static final int app_name=0x7f080003;
         /**  activity edition players 
          */
-        public static final int btn_save_changes_players=0x7f070013;
-        public static final int delete_players=0x7f070008;
-        public static final int edit_text_age=0x7f070012;
-        public static final int for_retire=0x7f070010;
+        public static final int btn_save_changes_players=0x7f080013;
+        public static final int delete_players=0x7f080008;
+        public static final int edit_text_age=0x7f080012;
+        public static final int for_retire=0x7f080010;
         /**  Options System 
          */
-        public static final int hello_world=0x7f070000;
-        public static final int load_players=0x7f070007;
-        public static final int management_players=0x7f070006;
+        public static final int hello_world=0x7f080000;
+        public static final int load_players=0x7f080007;
+        public static final int management_players=0x7f080006;
         /**  menu settings 
          */
-        public static final int preferencies=0x7f070005;
+        public static final int preferencies=0x7f080005;
         /**  Button show_screen_players 
          */
-        public static final int show_screen_players=0x7f070004;
-        public static final int title_activity_delete_players=0x7f07000b;
-        public static final int title_activity_edition_player=0x7f07000d;
-        public static final int title_activity_load_players=0x7f07000a;
-        public static final int title_activity_preferences=0x7f070009;
-        public static final int title_activity_preferences_user=0x7f07000c;
-        public static final int title_activity_settings=0x7f070002;
-        public static final int txt_code_player=0x7f07000f;
+        public static final int show_screen_players=0x7f080004;
+        public static final int title_activity_delete_players=0x7f08000b;
+        public static final int title_activity_edition_player=0x7f08000d;
+        public static final int title_activity_load_players=0x7f08000a;
+        public static final int title_activity_preferences=0x7f080009;
+        public static final int title_activity_preferences_user=0x7f08000c;
+        public static final int title_activity_settings=0x7f080002;
+        public static final int txt_code_player=0x7f08000f;
         /**  edition_player.xml 
          */
-        public static final int txt_edition=0x7f07000e;
+        public static final int txt_edition=0x7f08000e;
     }
     public static final class style {
         /** 
@@ -120,11 +134,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

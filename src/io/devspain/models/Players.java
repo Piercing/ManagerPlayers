@@ -52,21 +52,6 @@ public class Players {
 		getPlayers().add(n);
 	}
 
-	public static String[] getPlayersListToArrayPlayers() {
-
-		// Check if players list is empty, if this list is null create a new list
-		if (players == null) {
-			players = new LinkedList<Player>();
-		} else {
-			// Convert list to array of players
-			namePlayers = new String[players.size()];
-			for (int i = 0; i < players.size(); i++) {
-				namePlayers[i] = players.get(i).getName();
-			}
-		}
-		return namePlayers;
-	}
-
 	// Getter
 	public List<Player> getPlayers() {
 		// Compruebo si no contiene nada la lista players
