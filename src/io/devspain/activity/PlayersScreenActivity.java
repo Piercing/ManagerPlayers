@@ -2,18 +2,15 @@ package io.devspain.activity;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import io.devspain.R;
 import io.devspain.fragments.EngagePlayersFragment;
-import io.devspain.fragments.EngagePlayersFragment.OnPlayerSelectedListener;
 import io.devspain.fragments.RetirePlayersFragment;
 
-public class PlayersScreenActivity extends FragmentActivity implements ActionBar.TabListener, OnPlayerSelectedListener {
+public class PlayersScreenActivity extends FragmentActivity implements ActionBar.TabListener {
 	// Crear nuevo objeto PlayersDataSource para que se cree la BBDD
 	// PlayersDataSource datasource = new PlayersDataSource(this);
 
@@ -29,13 +26,6 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 		// Add the tabs
 		ab.addTab(ab.newTab().setText("Para Jubilar").setTabListener(this));
 		ab.addTab(ab.newTab().setText("para Fichar").setTabListener(this));
-
-		FragmentManager FM = getFragmentManager();
-		FragmentTransaction FT = FM.beginTransaction();
-
-		Fragment fragmentEngage = new Fragment();
-		FT.replace(R.id.container, fragmentEngage);
-		FT.commit();
 	}
 
 	@Override
@@ -69,22 +59,4 @@ public class PlayersScreenActivity extends FragmentActivity implements ActionBar
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public void onPlayerSelected(String str) {
-		Fragment fragmentEngageSelected = new Fragment();
-
-		Bundle args = new Bundle();
-		args.putString("str", str);
-		fragmentEngageSelected.setArguments(args);
-
-		FragmentManager FM = getFragmentManager();
-		FragmentTransaction FT = FM.beginTransaction();
-
-		FT.replace(R.id.container, fragmentEngageSelected);
-		FT.addToBackStack(null);
-
-		FT.commit();
-	}
-
 }

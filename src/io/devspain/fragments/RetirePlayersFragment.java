@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,9 +33,6 @@ public class RetirePlayersFragment extends ListFragment {
 	// String getDataRowPlayer = bundle.getString("str");
 
 	private List<String> mList = new ArrayList<String>();
-
-	// Instance Interface
-	private OnPlayerSelectedListener listener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -113,27 +109,6 @@ public class RetirePlayersFragment extends ListFragment {
 
 		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
 
-	}
-
-	@Override
-	// Verify that the host Activity implements the interface.
-	// "OnAttach ()" method will be called each time the activity create an instance of the fragment.
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		try {
-			listener = (OnPlayerSelectedListener) context;
-		} catch (ClassCastException e) {
-			e.getStackTrace();
-		}
-	}
-
-	// Este es el caso contrario al 'onAttach', cuando el fragment deja de
-	// estar dentro de mi actividad es decirle que 'CityListListener' es null
-	// Es decir, cuando lo eliminemos y deje de estar disponible, ahorrando memoria.
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		listener = null;
 	}
 
 }

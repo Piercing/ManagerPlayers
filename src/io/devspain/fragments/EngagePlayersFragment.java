@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,14 +28,8 @@ public class EngagePlayersFragment extends ListFragment implements Serializable 
 	private static final long serialVersionUID = 1L;
 
 	String[] playersRetire = { "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
-			"Branislav Ivanovic, Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
+			"Branislav Ivanovic", "Thibout Courtouis", "John Terry", "Oscar", "Eden Hazard", "Diego Costa", "Petr Cech", "Didier Drogba",
 			"Branislav Ivanovic" };
-
-	// List of Player
-	// private static List<Player> mList;
-
-	// Instance Interface
-	private OnPlayerSelectedListener listener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +49,12 @@ public class EngagePlayersFragment extends ListFragment implements Serializable 
 	}
 
 	public static String itemValue;
+
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id) {
 
 		// Get string value where they click on the list
-		 itemValue = (String) listView.getItemAtPosition(position);
+		itemValue = (String) listView.getItemAtPosition(position);
 		// Show new activity through a intent
 		Intent newActivity = new Intent(getActivity(), EditionPlayerActivity.class);
 		// Put:pass selected data to the activity with identifier
@@ -73,27 +67,6 @@ public class EngagePlayersFragment extends ListFragment implements Serializable 
 		// listener.onPlayerSelected(players[position]);
 
 		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
-	}
-
-	@Override
-	// Verify that the host Activity implements the interface.
-	// "OnAttach ()" method will be called each time the activity create an instance of the fragment.
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		try {
-			listener = (OnPlayerSelectedListener) context;
-		} catch (ClassCastException e) {
-			e.getStackTrace();
-		}
-	}
-
-	// Este es el caso contrario al 'onAttach', cuando el fragment deja de
-	// estar dentro de mi actividad es decirle que 'CityListListener' es null
-	// Es decir, cuando lo eliminemos y deje de estar disponible, ahorrando memoria.
-	@Override
-	public void onDetach() {
-		super.onDetach();
-		listener = null;
 	}
 
 	// TODO: REFACTOR
